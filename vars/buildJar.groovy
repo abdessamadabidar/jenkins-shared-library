@@ -1,5 +1,5 @@
 #!user/bin/env groovy
 
-def call() {
-    return new Maven(this).build()
+def call(String serviceName) {
+    return new Maven(this).build(serviceName)
 }
