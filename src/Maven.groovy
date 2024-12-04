@@ -10,6 +10,7 @@ class Maven implements Serializable {
 
 
     def build() {
+        script.sh 'pwd'
         script.sh 'mvn clean package'
     }
 }
