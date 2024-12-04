@@ -12,4 +12,8 @@ class Maven implements Serializable {
     def build(String serviceName) {
         script.sh "mvn -f /var/jenkins_home/workspace/shopino-microservices/config-service/services/${serviceName} clean package -DskipTests"
     }
+
+    def install(String serviceName) {
+        script.sh "mvn -f /var/jenkins_home/workspace/shopino-microservices/config-service/services/${serviceName} install -DskipTests"
+    }
 }
