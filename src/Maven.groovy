@@ -10,6 +10,7 @@ class Maven implements Serializable {
 
 
     def build(String directory) {
+        script.sh "pwd"
         script.sh "mvn -f /var/jenkins_home/workspace/shopino-microservices/services/${directory} clean package -DskipTests"
     }
 
