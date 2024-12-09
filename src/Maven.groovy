@@ -16,4 +16,8 @@ class Maven implements Serializable {
     def install(String directory) {
         script.sh "mvn -f services/${directory} clean install -DskipTests"
     }
+
+    def deploy(String directory) {
+        script.sh "mvn -f services/${directory} clean deploy"
+    }
 }
