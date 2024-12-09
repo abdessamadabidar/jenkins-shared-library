@@ -7,19 +7,19 @@ class Docker implements Serializable {
     }
 
 
-    def dockerLogin() {
+    def dockerLogin(String nexusHostname, String dockerRepositoryPort) {
         script.withCredentials([
                 script.usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')
         ]) {
-            script.sh "echo '${script.PASSWORD}' | docker login -u '${script.USERNAME}' --password-stdin"
+            script.sh "echo '${script.PASSWORD}' | docker login -u '${script.USERNAME}' --password-stdin ${nexusHostname}:${dockerRepositoryPort}"
         }
     }
 
-    def buildImage(String imageName, String imageVersion, String path) {
-        script.sh "docker build -t ${imageName}:${imageVersion} ${path}"
+    def buildImage(String nexusHostname, String dockerRepositoryPort, String imageName, String imageVersion, String path) {
+        script.sh "docker build -t ${nexusHostname}:${dockerRepositoryPort}/${imageName}:${imageVersion} ${path}"
     }
 
-    def pushImage(String imageName, String imageVersion) {
-        script.sh "docker push ${imageName}:${imageVersion}"
+    def pushImage(String nexusHostname, String dockerRepositoryPort, String imageName, String imageVersion) {
+        script.sh "docker push ${nexusHostname}:${dockerRepositoryPort}/${imageName}:${imageVersion}"
     }
 }

@@ -1,5 +1,5 @@
 #!user/bin/env groovy
 
-def call() {
-    return new Docker(this).dockerLogin()
+def call(String nexusHostname, String dockerRepositoryPort) {
+    return new Docker(this).dockerLogin(nexusHostname, dockerRepositoryPort)
 }
