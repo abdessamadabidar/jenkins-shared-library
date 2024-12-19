@@ -1,5 +1,5 @@
 #!user/bin/env groovy
 
-def call(String directory) {
-    return new Maven(this).deploy(directory)
+def deploy(String ansibleHost, String nexusHost) {
+    return new Ansible(this).deploy(ansibleHost, nexusHost);
 }

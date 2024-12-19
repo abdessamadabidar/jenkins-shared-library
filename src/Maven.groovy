@@ -18,6 +18,6 @@ class Maven implements Serializable {
     }
 
     def deploy(String directory) {
-        script.sh "mvn -f services/${directory} clean deploy"
+        script.sh "mvn -f services/${directory} clean deployJar"
     }
 }

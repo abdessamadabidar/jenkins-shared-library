@@ -1,3 +1,5 @@
+#!user/bin/env groovy
+
 class Docker implements Serializable {
 
     def script
