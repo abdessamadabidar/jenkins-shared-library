@@ -17,11 +17,11 @@ class Docker implements Serializable {
         }
     }
 
-    def buildImage(String nexusHostname, String dockerRepositoryPort, String imageName, String imageVersion, String path) {
-        script.sh "docker build -t ${nexusHostname}:${dockerRepositoryPort}/${imageName}:${imageVersion} ${path}"
+    def buildImage(String nexusHostname, String imageName, String imageVersion, String path) {
+        script.sh "docker build -t ${nexusHostname}/${imageName}:${imageVersion} ${path}"
     }
 
-    def pushImage(String nexusHostname, String dockerRepositoryPort, String imageName, String imageVersion) {
-        script.sh "docker push ${nexusHostname}:${dockerRepositoryPort}/${imageName}:${imageVersion}"
+    def pushImage(String nexusHostname, String imageName, String imageVersion) {
+        script.sh "docker push ${nexusHostname}/${imageName}:${imageVersion}"
     }
 }
